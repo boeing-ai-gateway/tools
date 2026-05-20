@@ -1,5 +1,0 @@
-name: Existing Credential
-description: Returns an ephemeral empty credential enabling the use of existing externally managed credentials
-
-#!sys.echo
-{"ephemeral":true}

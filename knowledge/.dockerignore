@@ -1,7 +1,0 @@
-.local/
-*.env
-*.md
-docs/
-*.db
-bin/
-dist/

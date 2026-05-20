@@ -1,9 +1,0 @@
-flows:
-  foo:
-    default: true
-    ingestion:
-      - filetypes: [ ".pdf" ]
-        documentloader:
-          name: ocr_openai
-          options:
-            apiKey: ${OPENAI_API_KEY}

@@ -1,2 +1,0 @@
-foo: bar
-some-invalid-config
