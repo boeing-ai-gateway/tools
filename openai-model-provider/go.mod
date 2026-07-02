@@ -1,4 +1,4 @@
-module github.com/obot-platform/tools/openai-model-provider
+module github.com/boeing-ai-gateway/tools/openai-model-provider
 
 go 1.26.2
 

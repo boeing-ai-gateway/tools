@@ -1,4 +1,4 @@
-module github.com/obot-platform/tools/tests
+module github.com/boeing-ai-gateway/tools/tests
 
 go 1.26.2
 
@@ -61,7 +61,7 @@ require (
 	github.com/minio/minlz v1.0.1 // indirect
 	github.com/modelcontextprotocol/go-sdk v0.2.0 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
-	github.com/nanobot-ai/nanobot v0.0.6-0.20250825141756-f61b8b0f41f8 // indirect
+	github.com/boeingbot-ai/boeingbot v0.0.6-0.20250825141756-f61b8b0f41f8 // indirect
 	github.com/nwaples/rardecode/v2 v2.2.0 // indirect
 	github.com/oasdiff/yaml v0.0.0-20250309154309-f31be36b4037 // indirect
 	github.com/oasdiff/yaml3 v0.0.0-20250309153720-d2182401db90 // indirect

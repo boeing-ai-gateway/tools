@@ -1,7 +1,7 @@
-module github.com/obot-platform/tools/generic-openai-model-provider
+module github.com/boeing-ai-gateway/tools/generic-openai-model-provider
 
 go 1.26.2
 
-replace github.com/obot-platform/tools/openai-model-provider => ../openai-model-provider
+replace github.com/boeing-ai-gateway/tools/openai-model-provider => ../openai-model-provider
 
-require github.com/obot-platform/tools/openai-model-provider v0.0.0
+require github.com/boeing-ai-gateway/tools/openai-model-provider v0.0.0

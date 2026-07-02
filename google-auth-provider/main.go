@@ -14,20 +14,20 @@ import (
 	oauth2proxy "github.com/oauth2-proxy/oauth2-proxy/v7"
 	"github.com/oauth2-proxy/oauth2-proxy/v7/pkg/apis/options"
 	"github.com/oauth2-proxy/oauth2-proxy/v7/pkg/validation"
-	"github.com/obot-platform/tools/auth-providers-common/pkg/env"
-	"github.com/obot-platform/tools/auth-providers-common/pkg/state"
-	"github.com/obot-platform/tools/google-auth-provider/pkg/profile"
+	"github.com/boeing-ai-gateway/tools/auth-providers-common/pkg/env"
+	"github.com/boeing-ai-gateway/tools/auth-providers-common/pkg/state"
+	"github.com/boeing-ai-gateway/tools/google-auth-provider/pkg/profile"
 )
 
 type Options struct {
-	ClientID                 string `env:"OBOT_GOOGLE_AUTH_PROVIDER_CLIENT_ID"`
-	ClientSecret             string `env:"OBOT_GOOGLE_AUTH_PROVIDER_CLIENT_SECRET"`
-	ObotServerURL            string `env:"OBOT_SERVER_PUBLIC_URL,OBOT_SERVER_URL"`
-	PostgresConnectionDSN    string `env:"OBOT_AUTH_PROVIDER_POSTGRES_CONNECTION_DSN" optional:"true"`
-	AuthCookieSecret         string `usage:"Secret used to encrypt cookie" env:"OBOT_AUTH_PROVIDER_COOKIE_SECRET"`
-	AuthEmailDomains         string `usage:"Email domains allowed for authentication" default:"*" env:"OBOT_AUTH_PROVIDER_EMAIL_DOMAINS"`
-	AuthTokenRefreshDuration string `usage:"Duration to refresh auth token after" optional:"true" default:"1h" env:"OBOT_AUTH_PROVIDER_TOKEN_REFRESH_DURATION"`
-	LoggingEnabled           string `usage:"Enable oauth2-proxy logging" optional:"true" env:"OBOT_AUTH_PROVIDER_ENABLE_LOGGING"`
+	ClientID                 string `env:"BOEING_GOOGLE_AUTH_PROVIDER_CLIENT_ID"`
+	ClientSecret             string `env:"BOEING_GOOGLE_AUTH_PROVIDER_CLIENT_SECRET"`
+	BoeingServerURL            string `env:"BOEING_SERVER_PUBLIC_URL,BOEING_SERVER_URL"`
+	PostgresConnectionDSN    string `env:"BOEING_AUTH_PROVIDER_POSTGRES_CONNECTION_DSN" optional:"true"`
+	AuthCookieSecret         string `usage:"Secret used to encrypt cookie" env:"BOEING_AUTH_PROVIDER_COOKIE_SECRET"`
+	AuthEmailDomains         string `usage:"Email domains allowed for authentication" default:"*" env:"BOEING_AUTH_PROVIDER_EMAIL_DOMAINS"`
+	AuthTokenRefreshDuration string `usage:"Duration to refresh auth token after" optional:"true" default:"1h" env:"BOEING_AUTH_PROVIDER_TOKEN_REFRESH_DURATION"`
+	LoggingEnabled           string `usage:"Enable oauth2-proxy logging" optional:"true" env:"BOEING_AUTH_PROVIDER_ENABLE_LOGGING"`
 }
 
 func main() {
@@ -74,12 +74,12 @@ func main() {
 		oauthProxyOpts.Session.Postgres.TableNamePrefix = "google_"
 	}
 	oauthProxyOpts.Cookie.Refresh = refreshDuration
-	oauthProxyOpts.Cookie.Name = "obot_access_token"
+	oauthProxyOpts.Cookie.Name = "boeing_access_token"
 	oauthProxyOpts.Cookie.Secret = string(bytes.TrimSpace(cookieSecret))
-	oauthProxyOpts.Cookie.Secure = strings.HasPrefix(opts.ObotServerURL, "https://")
+	oauthProxyOpts.Cookie.Secure = strings.HasPrefix(opts.BoeingServerURL, "https://")
 	oauthProxyOpts.Cookie.CSRFExpire = 30 * time.Minute
 	oauthProxyOpts.Templates.Path = os.Getenv("GPTSCRIPT_TOOL_DIR") + "/../auth-providers-common/templates"
-	oauthProxyOpts.RawRedirectURL = opts.ObotServerURL + "/"
+	oauthProxyOpts.RawRedirectURL = opts.BoeingServerURL + "/"
 	if opts.AuthEmailDomains != "" {
 		emailDomains := strings.Split(opts.AuthEmailDomains, ",")
 		for i := range emailDomains {
@@ -113,8 +113,8 @@ func main() {
 	mux.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(fmt.Sprintf("http://127.0.0.1:%s", port)))
 	})
-	mux.HandleFunc("/obot-get-state", state.ObotGetState(oauthProxy))
-	mux.HandleFunc("/obot-get-user-info", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/boeing-get-state", state.BoeingGetState(oauthProxy))
+	mux.HandleFunc("/boeing-get-user-info", func(w http.ResponseWriter, r *http.Request) {
 		userInfo, err := profile.FetchGoogleProfile(r.Context(), r.Header.Get("Authorization"), "https://openidconnect.googleapis.com/v1/userinfo")
 		if err != nil {
 			http.Error(w, fmt.Sprintf("failed to fetch user info: %v", err), http.StatusBadRequest)
@@ -123,7 +123,7 @@ func main() {
 
 		json.NewEncoder(w).Encode(userInfo)
 	})
-	mux.HandleFunc("/obot-list-user-auth-groups", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/boeing-list-user-auth-groups", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 	})
 	mux.HandleFunc("/", oauthProxy.ServeHTTP)

@@ -1,10 +1,10 @@
-module github.com/obot-platform/tools/anthropic-model-provider
+module github.com/boeing-ai-gateway/tools/anthropic-model-provider
 
 go 1.26.2
 
-replace github.com/obot-platform/tools/openai-model-provider => ../openai-model-provider
+replace github.com/boeing-ai-gateway/tools/openai-model-provider => ../openai-model-provider
 
 require (
 	github.com/gptscript-ai/chat-completion-client v0.0.0-20250123123106-c86554320789
-	github.com/obot-platform/tools/openai-model-provider v0.0.0-20250327233502-e281d9bc8d01
+	github.com/boeing-ai-gateway/tools/openai-model-provider v0.0.0-20250327233502-e281d9bc8d01
 )

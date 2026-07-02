@@ -1,4 +1,4 @@
-# replicaCount -- The number of Obot server instances to run
+# replicaCount -- The number of Boeing server instances to run
 replicaCount: 1
 
 mcpServer:

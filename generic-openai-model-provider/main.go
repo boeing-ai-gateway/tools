@@ -6,15 +6,15 @@ import (
 	"os"
 	"strings"
 
-	"github.com/obot-platform/tools/openai-model-provider/proxy"
+	"github.com/boeing-ai-gateway/tools/openai-model-provider/proxy"
 )
 
 func main() {
 	isValidate := len(os.Args) > 1 && os.Args[1] == "validate"
 
-	baseURL := os.Getenv("OBOT_GENERIC_OPENAI_MODEL_PROVIDER_BASE_URL")
+	baseURL := os.Getenv("BOEING_GENERIC_OPENAI_MODEL_PROVIDER_BASE_URL")
 	if baseURL == "" {
-		fmt.Println("OBOT_GENERIC_OPENAI_MODEL_PROVIDER_BASE_URL environment variable not set, credential must be provided on a per-request basis")
+		fmt.Println("BOEING_GENERIC_OPENAI_MODEL_PROVIDER_BASE_URL environment variable not set, credential must be provided on a per-request basis")
 	}
 
 	u, err := url.Parse(strings.TrimRight(baseURL, "/"))
@@ -33,8 +33,8 @@ func main() {
 	}
 
 	cfg := &proxy.Config{
-		APIKey:               os.Getenv("OBOT_GENERIC_OPENAI_MODEL_PROVIDER_API_KEY"), // optional, as e.g. Ollama doesn't require an API key
-		PersonalAPIKeyHeader: "X-Obot-OBOT_GENERIC_OPENAI_MODEL_PROVIDER_API_KEY",
+		APIKey:               os.Getenv("BOEING_GENERIC_OPENAI_MODEL_PROVIDER_API_KEY"), // optional, as e.g. Ollama doesn't require an API key
+		PersonalAPIKeyHeader: "X-Boeing-BOEING_GENERIC_OPENAI_MODEL_PROVIDER_API_KEY",
 		ListenPort:           os.Getenv("PORT"),
 		BaseURL:              u.String(),
 		RewriteModelsFn:      proxy.RewriteAllModelsWithUsage("llm"),

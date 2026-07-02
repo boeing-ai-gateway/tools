@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/obot-platform/tools/openai-model-provider/api"
+	"github.com/boeing-ai-gateway/tools/openai-model-provider/api"
 )
 
 type upstreamErrorResponse struct {

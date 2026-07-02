@@ -6,16 +6,16 @@ import (
 	"net/http/httputil"
 	"os"
 
-	aproxy "github.com/obot-platform/tools/anthropic-model-provider/proxy"
-	"github.com/obot-platform/tools/openai-model-provider/proxy"
+	aproxy "github.com/boeing-ai-gateway/tools/anthropic-model-provider/proxy"
+	"github.com/boeing-ai-gateway/tools/openai-model-provider/proxy"
 )
 
 func main() {
 	isValidate := len(os.Args) > 1 && os.Args[1] == "validate"
 
 	cfg := &proxy.Config{
-		APIKey:               os.Getenv("OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY"),
-		PersonalAPIKeyHeader: "X-Obot-OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY",
+		APIKey:               os.Getenv("BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY"),
+		PersonalAPIKeyHeader: "X-Boeing-BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY",
 		ListenPort:           os.Getenv("PORT"),
 		BaseURL:              "https://api.anthropic.com/v1/",
 		Name:                 "Anthropic",

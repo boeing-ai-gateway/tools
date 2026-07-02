@@ -214,8 +214,8 @@ github.com/modelcontextprotocol/go-sdk v0.2.0 h1:PESNYOmyM1c369tRkzXLY5hHrazj8x9
 github.com/modelcontextprotocol/go-sdk v0.2.0/go.mod h1:0sL9zUKKs2FTTkeCCVnKqbLJTw5TScefPAzojjU459E=
 github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 h1:RWengNIwukTxcDr9M+97sNutRR1RKhG96O6jWumTTnw=
 github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826/go.mod h1:TaXosZuwdSHYgviHp1DAtfrULt5eUgsSMsZf+YrPgl8=
-github.com/nanobot-ai/nanobot v0.0.6-0.20250825141756-f61b8b0f41f8 h1:SZsity7OCSBRVnqfPMpmaSnaIFlMUm3z8sGED5C31XU=
-github.com/nanobot-ai/nanobot v0.0.6-0.20250825141756-f61b8b0f41f8/go.mod h1:vKoxU5Fro4DuvHq2AsxjhNYF3/KRlAuHLFT+NZ9ns5w=
+github.com/nanboeing-ai/boeingbot v0.0.6-0.20250825141756-f61b8b0f41f8 h1:SZsity7OCSBRVnqfPMpmaSnaIFlMUm3z8sGED5C31XU=
+github.com/nanboeing-ai/boeingbot v0.0.6-0.20250825141756-f61b8b0f41f8/go.mod h1:vKoxU5Fro4DuvHq2AsxjhNYF3/KRlAuHLFT+NZ9ns5w=
 github.com/nightlyone/lockfile v1.0.0 h1:RHep2cFKK4PonZJDdEl4GmkabuhbsRMgk/k3uAmxBiA=
 github.com/nightlyone/lockfile v1.0.0/go.mod h1:rywoIealpdNse2r832aiD9jRk8ErCatROs6LzC841CI=
 github.com/nwaples/rardecode/v2 v2.2.0 h1:4ufPGHiNe1rYJxYfehALLjup4Ls3ck42CWwjKiOqu0A=

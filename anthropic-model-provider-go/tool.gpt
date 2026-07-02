@@ -1,7 +1,7 @@
 Name: Anthropic
 Description: Model provider for Anthropic hosted Claude models
 Model Provider: true
-Credential: ../placeholder-credential as anthropic-model-provider with OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY as env_vars
+Credential: ../placeholder-credential as anthropic-model-provider with BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY as env_vars
 Metadata: noUserAuth: anthropic-model-provider
 
 
@@ -16,7 +16,7 @@ Metadata: noUserAuth: anthropic-model-provider
     "dialect": "AnthropicMessages",
     "envVars": [
         {
-            "name": "OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY",
+            "name": "BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY",
             "friendlyName": "API Key",
             "description": "Anthropic API Key",
             "sensitive": true

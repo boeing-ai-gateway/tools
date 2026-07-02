@@ -4,8 +4,8 @@ FROM cgr.dev/chainguard/wolfi-base AS base
 RUN apk upgrade --no-cache && apk add --no-cache go-1.26 make git nodejs npm pnpm curl python-3.13 py3.13-pip
 
 FROM base AS tools
-WORKDIR /obot-tools/tools
-COPY . /obot-tools/tools
+WORKDIR /boeing-tools/tools
+COPY . /boeing-tools/tools
 RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store \
     --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=cache,target=/root/.cache/uv \
@@ -13,9 +13,9 @@ RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store \
     UV_LINK_MODE=copy BIN_DIR=/bin make package-tools
 
 FROM base AS providers
-WORKDIR /obot-tools
-COPY ./Makefile /obot-tools/
-COPY ./scripts/package-providers.sh /obot-tools/scripts/
+WORKDIR /boeing-tools
+COPY ./Makefile /boeing-tools/
+COPY ./scripts/package-providers.sh /boeing-tools/scripts/
 
 RUN --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=cache,target=/root/go/pkg/mod \

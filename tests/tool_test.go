@@ -14,7 +14,7 @@ import (
 func TestGPTScriptLoadTools(t *testing.T) {
 	ctx := context.Background()
 
-	registryURL := "github.com/obot-platform/tools"
+	registryURL := "github.com/boeing-ai-gateway/tools"
 	url, err := sdkserver.EmbeddedStart(ctx)
 	if err != nil {
 		t.Fatal(err)

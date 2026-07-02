@@ -31,7 +31,7 @@ type Config struct {
 	APIKey string
 
 	// PersonalAPIKeyHeader is used to pull personal API keys that will be used when forwarding the request to the model provider
-	// Should start with `X-Obot-`
+	// Should start with `X-Boeing-`
 	PersonalAPIKeyHeader string
 
 	// PersonalBaseURLHeader is used to pull a personal base URL from the headers of a request to be used when forwarding the request to the model provider.

@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	openai "github.com/gptscript-ai/chat-completion-client"
-	"github.com/obot-platform/tools/openai-model-provider/proxy"
+	"github.com/boeing-ai-gateway/tools/openai-model-provider/proxy"
 )
 
 const AnthropicBaseHostName = "api.anthropic.com"
@@ -29,9 +29,9 @@ func (s *Server) AnthropicProxyRedirect(req *http.Request) {
 	req.Host = req.URL.Host
 
 	apiKey := s.cfg.APIKey
-	if requestAPIKey := req.Header.Get("X-Obot-OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY"); requestAPIKey != "" {
+	if requestAPIKey := req.Header.Get("X-Boeing-BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY"); requestAPIKey != "" {
 		apiKey = requestAPIKey
-		req.Header.Del("X-Obot-OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY")
+		req.Header.Del("X-Boeing-BOEING_ANTHROPIC_MODEL_PROVIDER_API_KEY")
 	}
 	req.Header.Del("Authorization")
 	req.Header.Set("x-api-key", apiKey)
